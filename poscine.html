@@ -1,0 +1,204 @@
+<html>
+<head>
+  <title>Cine World</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="images/logocine.ico">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="poscine.html">Ventas</a></li>
+      <li><a href="productos.html">Inventario</a></li>
+      <li><a href="loginuser.html">Usuarios</a></li>
+      <li><a href="loginclubcine.html">ClubCine</a></li>
+    </ul>
+  </nav>
+  <section id="container">
+    <div style="height: 600px;">
+
+      <div style="text-align: right;">
+        <div id="button-container">
+          <a href="ventas.html" class="boton1">Registro de Ventas</a>
+        </div>
+      </div>
+
+      <div style="display: flex;">
+      <div id="box" style="flex: 1;">
+
+        <div id="izquierdo">
+          <button>
+      		<img src="images/popcorn.jpg" alt="palomitas" title="8" width="150" height="150">
+      	</button>
+      	<button>
+      		<img src="images/soda.jpg" alt="refresco" title="5" width="150" height="150">
+      	</button>
+        <button>
+      		<img src="images/nachos.jpg" alt="nachos con queso" title="7" width="150" height="150">
+      	</button>
+        <button>
+      		<img src="images/ice.jpg" alt="helado" title="6" width="150" height="150">
+      	</button>
+        <button>
+      		<img src="images/hotdog.jpg" alt="hot dog" title="3" width="150" height="150">
+      	</button>
+        <button>
+      		<img src="images/papasfritas.jpg" alt="papas fritas" title="4" width="150" height="150">
+      	</button>
+      	</div>
+
+      </div>
+      <div style="flex: 0.03;">
+      </div>
+
+      <div id="box"style="flex: 1; width: 650px;">
+
+        <div id="derecho" style="display: inline-block; float: left; width: 50%;">
+          <ul id="ulfactura">
+      		<li id="lifactura">Ticket Dulceria / CineWorld</li>
+      	  </ul>
+      	</div>
+
+        <div id="derecho1" style="display: inline-block; float: left; width: 50%;">
+          <ul id="ulfactura1">
+      		<li id="lifactura">Precio a pagar / Dolars </li>
+      	  </ul>
+      	</div>
+
+
+      </div>
+      </div>
+
+      <div style="text-align: right;">
+        <input value="Realizar venta" type="submit">
+        <input value="Agregar tarjeta clubcine" type="submit">
+        <input id="boton-eliminar" value="Eliminar" type="submit">
+      </div>
+
+    </div>
+
+
+
+
+  </section>
+  <script>
+	// Obtener los botones y la lista
+	const botones = document.querySelectorAll('#izquierdo button');
+	const lista = document.querySelector('#derecho ul');
+  const lista1 = document.querySelector('#derecho1 ul');
+
+	// Agregar un evento click a cada botón
+	botones.forEach(boton =>
+  {
+		boton.addEventListener('click', () =>
+    {
+			// Obtener el texto alternativo del botón
+			const palabra = boton.querySelector('img').alt;
+
+			// Crear un nuevo elemento li con la palabra y agregarlo a la lista
+			const nuevoLi = document.createElement('li');
+			nuevoLi.textContent = palabra;
+			lista.appendChild(nuevoLi);
+
+      ////
+      const numero = boton.querySelector('img').title;
+
+      const nuevoLi1 = document.createElement('li');
+      nuevoLi1.textContent = numero;
+      lista1.appendChild(nuevoLi1);
+
+		});
+	});
+
+  var posicionSeleccionada;
+  /////
+  function addClickEvent() {
+  var listItems = document.querySelectorAll("#ulfactura li");
+  var listItems1 = document.querySelectorAll("#ulfactura1 li");
+
+  listItems.forEach(function(item) {
+    item.addEventListener("click", function() {
+      // Quitar la clase "active" de todos los elementos de la lista
+      listItems.forEach(function(item) {
+        item.classList.remove("active");
+      });
+      // Agregar la clase "active" al elemento que se hizo clic
+      this.classList.add("active");
+
+      listItems1.forEach(function(item1) {
+        item1.classList.remove("active");
+      });
+
+    });
+  });
+
+  listItems1.forEach(function(item1) {
+    item1.addEventListener("click", function() {
+      // Quitar la clase "active" de todos los elementos de la lista
+      listItems1.forEach(function(item1) {
+        item1.classList.remove("active");
+
+      });
+      // Agregar la clase "active" al elemento que se hizo clic
+      this.classList.add("active");
+
+      listItems.forEach(function(item) {
+        item.classList.remove("active");
+      });
+
+    });
+  });
+
+
+  var itemnuevo = listItems[posicionSeleccionada];
+  itemnuevo.classList.add("active");
+  var itemnuevo1 = listItems1[posicionSeleccionada];
+  itemnuevo1.classList.add("active");
+
+}
+
+// Llamar la función cada 1 segundo
+setInterval(addClickEvent, 1000);
+//////////
+const botonEliminar = document.querySelector('#boton-eliminar');
+botonEliminar.addEventListener('click', () => {
+  // Obtener el elemento activo de la lista
+  const elementoActivo = document.querySelector('#ulfactura li.active');
+  if (elementoActivo) {
+    // Eliminar el elemento activo de la lista
+    elementoActivo.remove();
+  }
+  const elementoActivo1 = document.querySelector('#ulfactura1 li.active');
+  if (elementoActivo1) {
+    // Eliminar el elemento activo de la lista
+    elementoActivo1.remove();
+  }
+});
+
+setInterval(obtenerPosicion, 1000);
+function obtenerPosicion() {
+  const lista = document.getElementById("derecho");
+  const lista1 = document.getElementById("derecho1");
+  const elementos = lista.getElementsByTagName("li");
+  const elementos1 = lista1.getElementsByTagName("li");
+
+  // Agregar evento de click a cada elemento de la lista
+  for (let i = 0; i < elementos.length; i++) {
+    elementos[i].addEventListener("click", function() {
+      // Obtener la posición del elemento seleccionado
+      const posicion = Array.prototype.indexOf.call(elementos, this);
+      posicionSeleccionada = posicion;
+      console.log("Posición del elemento seleccionado: " + posicionSeleccionada);
+    });
+  }
+  for (let i = 0; i < elementos1.length; i++) {
+    elementos1[i].addEventListener("click", function() {
+      // Obtener la posición del elemento seleccionado
+      const posicion1 = Array.prototype.indexOf.call(elementos1, this);
+      posicionSeleccionada = posicion1;
+      console.log("Posición del elemento seleccionado: " + posicionSeleccionada);
+    });
+  }
+}
+  </script>
+</body>
+</html>

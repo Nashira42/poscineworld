@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>Cine World</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="images/logocine.ico">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="poscine.html">Ventas</a></li>
+      <li><a href="productos.html">Inventario</a></li>
+      <li><a href="loginuser.html">Usuarios</a></li>
+      <li><a href="loginclubcine.html">ClubCine</a></li>
+    </ul>
+  </nav>
+  <section id="container">
+    <div>
+
+      <div style="display: flex;">
+      <div id="box" style="flex: 1;">
+        <div id="inventario">
+      		<h2>Productos Generales</h2>
+      		<table>
+      			<thead>
+      				<tr>
+      					<th>ID</th>
+      					<th>Nombre</th>
+      					<th>Precio</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>1</td>
+      					<td>Producto 1</td>
+      					<td>$10.00</td>
+      				</tr>
+      				<tr>
+      					<td>2</td>
+      					<td>Producto 2</td>
+      					<td>$15.00</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      	</div>
+        <div id="inventario">
+      		<h2>Productos especificos</h2>
+      		<table>
+      			<thead>
+      				<tr>
+      					<th>Producto</th>
+      					<th>Cantidad</th>
+      					<th>Fecha de caducidad</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>Producto 1</td>
+      					<td>50</td>
+      					<td>01/01/2024</td>
+      				</tr>
+      				<tr>
+      					<td>Producto 2</td>
+      					<td>25</td>
+      					<td>01/01/2025</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      	</div>
+      </div>
+      <div style="flex: 0.03;">
+      </div>
+
+      <div id="box"style="flex: 1; width: 650px;">
+        <div id="inventario">
+      		<h2>Inventario</h2>
+      		<table>
+      			<thead>
+      				<tr>
+      					<th>Producto</th>
+      					<th>Cantidad</th>
+      					<th>Fecha de caducidad</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>Producto 1</td>
+      					<td>50</td>
+      					<td>01/01/2024</td>
+      				</tr>
+      				<tr>
+      					<td>Producto 2</td>
+      					<td>25</td>
+      					<td>01/01/2025</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      	</div>
+      </div>
+      </div>
+
+      <div style="text-align: right;">
+        <input value="Agregar" type="submit">
+        <input value="Editar" type="submit">
+        <input value="Eliminar" type="submit">
+      </div>
+
+    </div>
+  </section>
+<script>
+  // Obtener todas las filas del cuerpo de la tabla
+  const rows = document.querySelectorAll('#inventario tbody tr');
+
+  // Agregar un controlador de eventos clic a cada fila
+  rows.forEach(row => {
+      row.addEventListener('click', () => {
+          // Eliminar la clase 'selected' de todas las filas
+          rows.forEach(r => r.classList.remove('selected'));
+          // Agregar la clase 'selected' a la fila seleccionada
+          row.classList.add('selected');
+      });
+  });
+</script>
+</body>
+</html>

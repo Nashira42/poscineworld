@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title>Cine World</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="images/logocine.ico">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="poscine.html">Ventas</a></li>
+      <li><a href="productos.html">Inventario</a></li>
+      <li><a href="loginuser.html">Usuarios</a></li>
+      <li><a href="loginclubcine.html">ClubCine</a></li>
+    </ul>
+  </nav>
+  <section id="container">
+    <divstyle="height: 600px;">
+
+      <div style="text-align: right;">
+        <div id="button-container">
+          <a href="poscine.html" class="boton1">Volver a punto de venta</a>
+        </div>
+      </div>
+
+      <div style="display: flex;">
+      <div id="box" style="flex: 1;">
+        <div id="inventario">
+      		<h2>Ventas</h2>
+      		<table>
+      			<thead>
+      				<tr>
+      					<th>ID</th>
+      					<th>Nombre</th>
+      					<th>Precio</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>1</td>
+      					<td>Producto 1</td>
+      					<td>$10.00</td>
+      				</tr>
+      				<tr>
+      					<td>2</td>
+      					<td>Producto 2</td>
+      					<td>$15.00</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      	</div>
+
+      </div>
+      <div style="flex: 0.03;">
+      </div>
+
+      <div id="box"style="flex: 1; width: 650px;">
+        <div id="inventario">
+      		<h2>Detalle de Ventas</h2>
+      		<table>
+      			<thead>
+      				<tr>
+      					<th>Venta</th>
+      					<th>Cantidad</th>
+      					<th>Fecha de venta</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>0001</td>
+      					<td>50</td>
+      					<td>01/01/2024</td>
+      				</tr>
+      				<tr>
+      					<td>0002</td>
+      					<td>25</td>
+      					<td>01/01/2025</td>
+      				</tr>
+      			</tbody>
+      		</table>
+      	</div>
+      </div>
+      </div>
+
+
+
+    </div>
+  </section>
+<script>
+  // Obtener todas las filas del cuerpo de la tabla
+  const rows = document.querySelectorAll('#inventario tbody tr');
+
+  // Agregar un controlador de eventos clic a cada fila
+  rows.forEach(row => {
+      row.addEventListener('click', () => {
+          // Eliminar la clase 'selected' de todas las filas
+          rows.forEach(r => r.classList.remove('selected'));
+          // Agregar la clase 'selected' a la fila seleccionada
+          row.classList.add('selected');
+      });
+  });
+</script>
+</body>
+</html>
